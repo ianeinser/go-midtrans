@@ -18,6 +18,9 @@ type Client struct {
 	ClientKey  string
 	ServerKey  string
 
+	// This is a dynamic URL
+	NotificationUrl string
+
 	LogLevel int
 	Logger   *log.Logger
 }
@@ -57,6 +60,11 @@ func (c *Client) NewRequest(method string, fullPath string, body io.Reader) (*ht
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Accept", "application/json")
 	req.SetBasicAuth(c.ServerKey, "")
+
+	// Dynamic URL
+	if c.NotificationUrl != "" {
+		req.Header.Add("X-Override-Notification", c.NotificationUrl)
+	}
 
 	return req, nil
 }
