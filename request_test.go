@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/cheekybits/is"
-	midtrans "github.com/veritrans/go-midtrans"
+	midtrans "github.com/ianeinser/go-midtrans"
 )
 
 func TestCustomerFieldOmmittable(t *testing.T) {
