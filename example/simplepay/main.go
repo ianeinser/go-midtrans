@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"time"
 
-	midtrans "github.com/veritrans/go-midtrans"
+	midtrans "github.com/ianeinser/go-midtrans"
 )
 
 var midclient midtrans.Client
