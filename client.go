@@ -128,11 +128,13 @@ func (c *Client) ExecuteRequest(req *http.Request, v interface{}) error {
 
 		// we're safe to reflect status_code if response not return status code
 		if reflect.ValueOf(v).Elem().Kind() == reflect.Struct {
-			if reflect.ValueOf(v).Elem().FieldByName("StatusCode").Len() == 0 {
+			if reflect.ValueOf(v).Elem().FieldByName("StatusCode").IsValid() {
 				reflect.ValueOf(v).Elem().FieldByName("StatusCode").SetString(strconv.Itoa(res.StatusCode))
 				// response of snap transaction not return StatusMessage
 				if req.URL.Path != "/snap/v1/transactions" {
-					reflect.ValueOf(v).Elem().FieldByName("StatusMessage").SetString(error["message"])
+					if reflect.ValueOf(v).Elem().FieldByName("StatusMessage").IsValid() {
+						reflect.ValueOf(v).Elem().FieldByName("StatusMessage").SetString(error["message"])
+					}
 				}
 			}
 		}

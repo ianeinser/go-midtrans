@@ -3,8 +3,9 @@ package midtrans_test
 import (
 	"testing"
 
-	"github.com/cheekybits/is"
 	midtrans "github.com/ianeinser/go-midtrans"
+
+	"github.com/cheekybits/is"
 )
 
 func TestBank(t *testing.T) {
