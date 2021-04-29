@@ -116,7 +116,7 @@ type IrisBeneficiariesResponse struct {
 type IrisCreatePayoutResponse struct {
 	Payouts      []IrisCreatePayoutDetailResponse `json:"payouts"`
 	ErrorMessage string                           `json:"error_message"`
-	Errors       []string                         `json:"errors"`
+	Errors       interface{}                      `json:"errors"`
 }
 
 // IrisCreatePayoutDetailResponse : Represent Create payout detail response payload
